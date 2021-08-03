@@ -53,3 +53,12 @@ sudo snap refresh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i ./google-chrome-stable_current_amd64.deb
 echo "installing google-chrome...done\n\n"
+
+# install docker
+sudo apt remove docker docker-engine docker.io containerd runc
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+apt-cache madison docker-ce
+echo "sudo apt install docker-ce=<version> docker-ce-cli=<version> containerd.io"
